@@ -1,0 +1,17 @@
+<div class="container py-3">
+  <ul class="list-group">
+    {{#each model.services as |service|}}
+    <label class="btn {{if service.active 'btn-success' 'btn-primary'}}">
+      {{service.name}} <span>{{service.price}} €</span> {{input type="checkbox" checked=service.active class="d-none"}}
+    </label>
+    {{/each}}
+  </ul>
+
+  <div class="total">
+    <!-- Format en currency. -->
+    <p>Nombre de service actif: <span>{{model.countActive}}</span></p>
+    <p>Total: <span>{{model.sumActive}} €</span></p>
+  </div>
+</div>
+
+{{outlet}}
