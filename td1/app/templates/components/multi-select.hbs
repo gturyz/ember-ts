@@ -1,0 +1,4 @@
+{{#each elements as |elm|}}
+  <option value={{elm.id}} class="inline-block" selected={{array-contains selectedIds elm.id}}>{{elm.title}}</option>
+{{/each}}
+{{yield}}
