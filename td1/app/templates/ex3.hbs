@@ -11,7 +11,7 @@
 
     <div class="col-sm">
 
-      {{#bs-button block=true onClick=(action "addToIncluded" model.dispoItems_ model)}}
+      {{#bs-button block=true onClick=(action "addToIncluded" model)}}
         {{fa-icon "step-forward"}}
       {{/bs-button}}
 
@@ -19,7 +19,7 @@
         {{fa-icon "fast-forward"}}
       {{/bs-button}}
 
-      {{#bs-button block=true onClick=(action "removeFromIncluded" model.includedItems_ model)}}
+      {{#bs-button block=true onClick=(action "removeFromIncluded" model)}}
         {{fa-icon "step-backward"}}
       {{/bs-button}}
 
@@ -31,7 +31,7 @@
 
     <div class="col-sm">
       <h2>Produits sélectionnés :</h2>
-      {{multi-select elements=model.includedItems selectedIds=model.includedItemsIds_}}
+      {{multi-select dblClick="dblClickRemoveFromIncluded" elements=model.includedItems selectedIds=model.includedItemsIds_}}
     </div>
 
   </div>

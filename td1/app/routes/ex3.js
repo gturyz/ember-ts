@@ -1,24 +1,37 @@
 import Route from '@ember/routing/route';
-import EmberObject, { computed, get } from '@ember/object';
+import EmberObject, { computed,get} from '@ember/object';
 
-const Elements = EmberObject.extend({
+
+const Liste=EmberObject.extend({
+
   dispoItems: null,
   includedItems: null,
-  dispoItemsIds_: null,
-  includedItemsIds_: null,
-  dispoItems_: computed('includedItemsIds_.[]', function(){
-    let dispoItems = this.get('dispoItems');
-    let dispoItemsIds_ = this.get('dispoItemsIds_');
-    return dispoItems.filter(item=>dispoItemsIds_.includes(get(item, 'id')));
+  dispoItemsIds_:[],
+  includedItemsIds_:[],
+  dispoItems_ : computed("dispoItemsIds_.[]",function () {
+    //Retourne les éléments de dispoItems correspondant aux ids
+    //let tab = [];
+    let dispoItems=this.get('dispoItems');
+    let ids=this.get('dispoItemsIds_');
+    return dispoItems.filter(item=>ids.includes(get(item,'id')));
+    //Retourne les élements de dispoItems correspondant aux ids
+
+
   }),
-  includedItems_: computed('dispoItemsIds_.[]', function(){
+  includedItems_:computed("includedItemsIds_.[]",function () {
+    let includedItems=this.get('includedItems');
+    let ids=this.get('includedItemsIds_');
+    return includedItems.filter(item=>ids.includes(get(item,'id')));
+    //Retourne les élements de dispoItems correspondant aux ids
 
   })
-})
+
+});
 
 export default Route.extend({
+
   model(){
-    let elements = Elements.create({
+    return Liste.create({
       dispoItems: [
         {
           "id": "1",
@@ -63,12 +76,9 @@ export default Route.extend({
           "image": "https://tutorialzine.com/media/2016/12/the-languages-and-frameworks-you-should-learn-in-2017.png"
         }
       ],
-      includedItems_:[],
-      dispoItemsIds_: [],
-      includedItemsIds_: [],
-      includedItems:[]
+      includedItems : []
+
     });
-    return elements;
   }
 
 });
