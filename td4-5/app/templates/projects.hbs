@@ -1,0 +1,39 @@
+<div class="ui container">
+	{{#link-to "developers.new" class="ui orange button"}}
+	<i class="plus circle icon"> </i>
+	Ajouter un projet
+	{{/link-to}}
+
+	<table class="ui single line table">
+	  <thead>
+	    <tr>
+	      <th>Name</th>
+        <th>Descriptif</th>
+        <th>Début</th>
+        <th>Fin</th>
+        <th></th>
+	    </tr>
+	  </thead>
+	  <tbody>
+
+		{{#each model as |proj|}}
+		<tr>
+		<td>{{proj.name}}</td>
+    <td>{{proj.descriptif}}</td>
+    <td>{{proj.creationDate}}</td>
+    <td>{{proj.dueDate}}</td>
+    <td><i class="remove icon"> </i>
+            <i class="edit icon"> </i>
+          </td>
+
+
+		</tr>
+		{{/each}}
+
+	  </tbody>
+	</table>
+</div>
+
+{{outlet}}
+
+{{outlet}}

@@ -1,0 +1,9 @@
+<div class ="ui container">
+<div class="ui form segment">
+<div class="ui header">Ajout modifier dev </div>
+{{input value=model.copy.identity class="ui input"}}
+<button {{action "save" model}} class="ui button">Ajouter</button>
+<button {{action "cancel" }} class="ui button">Annuler</button>
+</div>
+</div>
+{{outlet}}
